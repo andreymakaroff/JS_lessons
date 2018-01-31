@@ -33,7 +33,7 @@ let sum = (priceList) => {
   });                                     // [ 12, 50, 13 ]
   let total = s.reduce(function(a, b) {
     return a + b;
-  });                                     // 75.
+  });                                     // 75
   return total;
 };
 
