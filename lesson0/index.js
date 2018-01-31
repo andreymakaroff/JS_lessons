@@ -15,25 +15,24 @@ let allInOne = (array, number) => {
 let allInOneByReducer = (array, number) => {
   let modifyArray = array.reduce((acc, item) => {
     let obj = {name: item, length: item.length};
+
     if(item.length >= number){
-      return acc.concat(obj);
+      return acc.concat(obj);    //.push не работает
     }else{
       return acc;
     }
-    // item.length >= number ? (acc.concat(obj)) : acc;  // не пойму почему не работает
+
+    // item.length >= number ? (acc.concat(obj)) : acc;  // не пойму почему не работает (через тернарный)
+
   }, []);
   return modifyArray;
 };
 
 let priceList = [{price: 12}, {price: 50}, {price: 13}];
 let sum = (priceList) => {
-  let s = [];
-  priceList.map((price) => {
-    s.push(price.price)
-  });                                     // [ 12, 50, 13 ]
-  let total = s.reduce(function(a, b) {
-    return a + b;
-  });                                     // 75
+  let total = priceList.reduce(function(a, b) {
+    return a + b.price;
+  }, 0);
   return total;
 };
 
