@@ -17,10 +17,6 @@ const firstAndOther = ( arg1, ...other) => ( { first: arg1, other: other } );
 
 //2
 
-const organisation = {
-    name: 'Google',
-    info: { employees: 1536, partners: ['Microsoft', 'Facebook', 'Xing'] }
-};
 const getInfo = ({name = '‘Unknown’', info: { partners: [ partn1, partn2 ] } }) => {
     console.log(`Name: ${name}`);
     console.log(`Partners: ${partn1}, ${partn2}`);
