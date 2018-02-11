@@ -5,11 +5,7 @@
 const utils = {
     numbers: [1,2,3,4],
     prefix: 'number',
-    getOdd() {
-        return this.numbers.map( (number) => {
-            return this.prefix + ' - ' + number;
-        })
-    },
+    getOdd() {return this.numbers.map( (number) =>  this.prefix + ' - ' + number )},
 };
 
 // 3
@@ -22,8 +18,6 @@ const getDay = () => {
 };
 
 const getListCopy = list => [...list];
-
-
 
 
 // 02
@@ -46,15 +40,11 @@ const obj = {
 
 //3
 
-const getOneObject = (...arrg) => {
-    return Object.assign(...arrg);
-};
+const getOneObject = (...arrg) => Object.assign(...arrg);
 
+//03
 
-
-// //03
-
-//1
+//2
 
 class Component  {
     constructor( tagName = 'div' ) {
