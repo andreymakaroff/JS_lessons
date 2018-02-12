@@ -137,3 +137,58 @@ class NamedTable extends Table{
 // console.log(table2.setName('super table'));
 // console.log(table2.setName());
 // console.log(table2.getInfo());
+
+
+//02  PROMISES
+
+//1
+
+const promiseCreator = (seconds, resultStr) => {
+    const promise = new Promise((resolve) => {
+        setTimeout(() => {resolve(resultStr)}, seconds);
+    });
+    return promise;
+};
+
+const promiseCreator = (seconds, resultStr) =>  new Promise((resolve) => setTimeout(() => {resolve(resultStr)}, seconds));
+
+//2
+
+
+// const promise = new Promise( function(resolve, reject){...} );
+
+const promise = new Promise(function(resolve, reject) {
+    resolve(  someValue  );
+});
+
+promise.then(function (value) {
+    console.log(value);
+});
+
+
+
+
+//---
+// const promise = new Promise(function (resolve, reject){
+//     setTimeout( function () { resolve('some value')}, 1000 );
+// });
+//
+// Создать функцию, которая возвращает промис.  Функция принимает два аргумента - время, через которое промис должен выполниться, и значение, с которым промис будет выполнен.
+//
+//     function promiseCreator(...) {...}
+// const prom = promiseCreator(500, 'Ok!');
+// prom.then(console.log);
+// Ok!
+
+
+const promiseCreator = (seconds, resultStr) => {
+    const promise = new Promise((resolve) => {
+        setTimeout(() => {resolve(resultStr)}, seconds);
+    });
+    return promise;
+};
+
+const promiseCreator = (seconds, resultStr) =>  new Promise((resolve) => setTimeout(() => {resolve(resultStr)}, seconds));
+
+const prom = promiseCreator(500, 'Ok!');
+prom.then(console.log);
