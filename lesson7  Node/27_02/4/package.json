@@ -1,0 +1,14 @@
+{
+  "name": "27_02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "createDir.js",
+  "scripts": {
+    "createDir": "node createDir.js"
+  },
+  "author": "Andrey",
+  "license": "ISC",
+  "dependencies": {
+    "file-system": "^2.2.2"
+  }
+}
