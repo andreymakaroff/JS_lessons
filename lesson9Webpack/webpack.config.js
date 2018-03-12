@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 
 module.exports = {
   entry: './app.js',
@@ -19,6 +21,16 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: /\.s?css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [  // снизу вверх
+            {loader: "css-loader"},   // .
+            {loader: "sass-loader"}   // .scss to css
+          ]
+        })
       }
     ]
   },
@@ -26,8 +38,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
-      title: 'Allah Akbar'
-    })
+      title: 'Hi Andrew'
+    }),
+    new ExtractTextPlugin("styles.css"),
   ],
 
   optimization: {
