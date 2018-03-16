@@ -1,6 +1,6 @@
 const jquery = require('jquery');
-const header = require('./scripts/header');
-const footer = require('./scripts/footer');
-const main = require('./scripts/main');
+const header = require('./modules/header/header');
+const footer = require('./modules/footer/footer');
+const main = require('./modules/main/main');
 
 jquery('body').append(header, main, footer);

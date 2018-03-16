@@ -1,4 +1,5 @@
-const builder = require('./elementBuilder');
+const builder = require('../elementBuilder');
+require('./header.css');
 
 const headerHtml = '<a href="/">Logo</a>';
 

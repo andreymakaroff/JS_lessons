@@ -1,0 +1,21 @@
+@mixin round($angle: 10px) {
+  border-radius: $angle;
+}
+
+@mixin triangle($side: top) {
+  &:after{
+    border: 20px solid transparent;
+    border-#{$side}: 20px solid green;
+    content: '';
+  }
+}
+
+@mixin cube($side: 100px) {
+  width: $side;
+  height: $side;
+  background: darkblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}

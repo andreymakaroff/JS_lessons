@@ -1,0 +1,26 @@
+@import 'functions';
+@import 'mixins';
+@import 'generators';
+
+body{
+  display: flex;
+}
+
+.darken{
+  @include cube(200px);
+  background: getDarken(green);
+  width: getPart(400px, 50); //200px
+}
+
+.mixin{
+  @include round(20px);
+  @include triangle(right);
+  @include cube(150px);
+}
+
+ul{
+  width: 200px;
+  li{
+    @include cube(20px);
+  }
+}

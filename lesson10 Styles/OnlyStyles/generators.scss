@@ -1,0 +1,11 @@
+@for $i from 1 through 10 {
+  .width#{$i} {
+    width: $i * 10%;
+  }
+}
+
+@for $i from 1 through 20 {
+  li:nth-child(#{$i}) {
+    background: rgb(255-$i*5, $i*5, $i*10);
+  }
+}
