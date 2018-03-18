@@ -12,8 +12,8 @@ module.exports = function (config) {
     frameworks: ['mocha'],  //for pretty result
 
     files: [
-      'src/**/*.js',
-      'src/*.js'
+      'src/**/*spec.js',
+      'src/*spec.js'
     ],
 
     exclude: [],
