@@ -2,49 +2,33 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
-const args = require('yargs').argv;
 
 let stylesLoader = [
-  {loader: "style-loader"},
+  {loader: 'style-loader'},
   {loader: "css-loader"},
   {loader: "sass-loader"}
 ];
 
 const plugins = [
   new HtmlWebpackPlugin({
-    template: 'index.html',
-    title: 'Hi Andrew'
+    title: 'Test app',
+    template: 'index.html'
   }),
   new webpack.HotModuleReplacementPlugin(),
+  new ExtractTextPlugin({
+    filename: 'styles.css',
+    allChunks: true
+  }),
+  new webpack.ProvidePlugin({
+    React: 'react'
+  })
 ];
-
-if(args.env && args.env.styles || args.env.hs) {
-  stylesLoader = ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: [
-      {loader: "css-loader"},
-      {loader: "sass-loader"}
-    ]
-  });
-  if (args.env.styles) {
-    plugins.push(new ExtractTextPlugin({
-      filename: 'styles.css',
-      allChunks: true
-    }));
-  }
-  if (args.env.hs) {
-    plugins.push(new ExtractTextPlugin({
-      filename: '[name]-[hash].css',
-      allChunks: true
-    }))
-  }
-}
 
 module.exports = {
   entry: './app.js',
   context: path.resolve('src'),
   output: {
-    filename: 'bundle-[hash].js',
+    filename: 'bundle-[name].js'
   },
 
   module: {
@@ -55,7 +39,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env'],
+            presets: ['env', 'react'],  // + add react for jsx
             plugins: ['syntax-dynamic-import']
           }
         }
@@ -63,8 +47,21 @@ module.exports = {
 
       {
         test: /\.s?css$/,
-        use: stylesLoader
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {loader: "css-loader"},
+            {loader: "sass-loader"}
+          ]
+        })
       },
+
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+      }
 
     ]
   },
@@ -77,11 +74,13 @@ module.exports = {
     },
   },
 
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
-      port: 9000,
-      hot: true
-  }
+  mode: 'development',
 
+  devServer: {
+    contentBase: path.resolve('dist'),
+    publicPath: '/',
+    port: 9000,
+    hot: true
+  }
 };
+
